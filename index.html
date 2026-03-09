@@ -23,6 +23,14 @@
   <meta name="twitter:description" content="Full Stack Developer Portfolio" />
   <meta name="twitter:image" content="/preview.png" />
 
+  <script>
+  if (!localStorage.theme) {
+    localStorage.theme = "dark";
+  }
+  if (localStorage.theme === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+</script>
 </head>
 
   <body>
