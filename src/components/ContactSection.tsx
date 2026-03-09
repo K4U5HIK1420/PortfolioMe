@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, Github, Linkedin, MessageCircle, Mail } from "lucide-react";
@@ -8,15 +9,35 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      setSent(true);
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setSent(false), 4000);
-    }, 1200);
-  };
+  e.preventDefault();
+
+  setSending(true);
+
+  emailjs
+    .send(
+      "service_xhkk5fo",
+      "template_kew7eky",
+      {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      },
+      "_pXfvfez8tNNoFu4M"
+    )
+    .then(
+      () => {
+        setSending(false);
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+
+        setTimeout(() => setSent(false), 4000);
+      },
+      (error) => {
+        console.error(error);
+        setSending(false);
+      }
+    );
+};
 
   return (
     <section id="contact" className="py-24 lg:py-32">
