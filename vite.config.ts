@@ -9,7 +9,7 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/PortfolioMe/",
+  base: "/",
 
   server: {
     host: "::",
